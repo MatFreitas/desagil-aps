@@ -21,10 +21,18 @@ public class AndGate extends Gate {
         if (inputIndex < 0 || inputIndex > 1) {
             throw new IndexOutOfBoundsException(inputIndex);
         }
-        nand1.connect(0, emitter);
-        nand1.connect(1, emitter);
 
-        nand2.connect(0, nand1);
-        nand2.connect(1, nand1);
+        if (inputIndex == 0) {
+            nand1.connect(0, emitter);
+        }
+
+        if (inputIndex == 1) {
+            nand1.connect(1, emitter);
+        }
+
+        if (nand1.read() != false) {
+            nand2.connect(0, nand1);
+            nand2.connect(1, nand1);
+        }
     }
 }
