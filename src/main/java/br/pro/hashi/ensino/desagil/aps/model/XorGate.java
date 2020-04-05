@@ -33,12 +33,12 @@ public class XorGate extends Gate {
             nand3.connect(1, emitter);
         }
 
-        if (nand1.read() != false) {
-            nand2.connect(1, nand1);
-            nand3.connect(0, nand1);
-            nand4.connect(0, nand2);
-            nand4.connect(1, nand3);
-        }
+
+        nand2.connect(1, nand1);
+        nand3.connect(0, nand1);
+        nand4.connect(0, nand2);
+        nand4.connect(1, nand3);
+
 
     }
 }

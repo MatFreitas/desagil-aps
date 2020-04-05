@@ -30,9 +30,9 @@ public class AndGate extends Gate {
             nand1.connect(1, emitter);
         }
 
-        if (nand1.read() != false) {
-            nand2.connect(0, nand1);
-            nand2.connect(1, nand1);
-        }
+
+        nand2.connect(0, nand1);
+        nand2.connect(1, nand1);
+
     }
 }
