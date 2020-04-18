@@ -14,8 +14,8 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
     private final JCheckBox input0;
     private final JCheckBox input1;
     private final JCheckBox output;
-    private Switch zero;
-    private Switch one;
+    private final Switch zero;
+    private final Switch one;
 
     public GateView(int width, int height, Gate gate) {
         setLayout(null);
@@ -24,7 +24,7 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         this.gate = gate;
 
         zero = new Switch();
-        input0= new JCheckBox();
+        input0 = new JCheckBox();
 
         one = new Switch();
         input1 = new JCheckBox();
@@ -51,18 +51,17 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         output.setEnabled(false);
 
         addMouseListener(this);
-         if (gate.getInputSize() == 1) {
-             updateOne();
-         } else if (gate.getInputSize() == 2) {
-             updateTwo();
+        if (gate.getInputSize() == 1) {
+            updateOne();
+        } else if (gate.getInputSize() == 2) {
+            updateTwo();
         }
 
     }
 
-    protected Component add(Component comp, int x, int y, int width, int height) {
+    protected void add(Component comp, int x, int y, int width, int height) {
         super.add(comp);
         comp.setBounds(x, y, width, height);
-        return comp;
     }
 
     private void updateOne() {
@@ -92,11 +91,10 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         }
     }
 
-    public boolean connect (boolean inputzero) {
+    public boolean connect(boolean inputzero) {
         if (inputzero) {
             zero.turnOn();
-        }
-        else {
+        } else {
             zero.turnOff();
         }
 
@@ -105,17 +103,15 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         return gate.read();
     }
 
-    public boolean connect (boolean inputzero, boolean inputone) {
+    public boolean connect(boolean inputzero, boolean inputone) {
         if (inputzero) {
             zero.turnOn();
-        }
-        else {
+        } else {
             zero.turnOff();
         }
         if (inputone) {
             one.turnOn();
-        }
-        else {
+        } else {
             one.turnOff();
         }
 
