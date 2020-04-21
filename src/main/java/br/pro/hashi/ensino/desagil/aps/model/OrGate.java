@@ -9,18 +9,19 @@ public class OrGate extends Gate {
 
     public OrGate() {
         super("OR", 2);
-
+        //Criando os objetos
         nandCima = new NandGate();
         nandBaixo = new NandGate();
         nandDir = new NandGate();
 
+        //Conectando
+        nandDir.connect(0, nandCima);
+        nandDir.connect(1, nandBaixo);
+        
     }
 
     @Override
     public boolean read() {
-        nandDir.connect(0, nandCima);
-        nandDir.connect(1, nandBaixo);
-
         return nandDir.read();
     }
 

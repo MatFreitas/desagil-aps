@@ -10,25 +10,22 @@ public class XorGate extends Gate {
 
     public XorGate() {
         super("XOR", 2);
-
+        //Criando os objetos
         nandEsq = new NandGate();
-
         nandCima = new NandGate();
-
-
         nandBaixo = new NandGate();
-
-
         nandDir = new NandGate();
-    }
 
-    @Override
-    public boolean read() {
+        //Conectando
         nandBaixo.connect(0, nandEsq);
         nandCima.connect(1, nandEsq);
         nandDir.connect(0, nandCima);
         nandDir.connect(1, nandBaixo);
 
+    }
+
+    @Override
+    public boolean read() {
         return nandDir.read();
     }
 
@@ -41,6 +38,7 @@ public class XorGate extends Gate {
                 nandCima.connect(0, emitter);
                 nandEsq.connect(0, emitter);
                 break;
+
             case 1:
 
                 nandEsq.connect(1, emitter);

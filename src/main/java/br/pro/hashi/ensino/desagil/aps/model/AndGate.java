@@ -8,17 +8,17 @@ public class AndGate extends Gate {
 
     public AndGate() {
         super("AND", 2);
-
+        //Criando os objetos
         nandEsq = new NandGate();
         nandDir = new NandGate();
 
+        //Conectando
+        nandDir.connect(0, nandEsq);
+        nandDir.connect(1, nandEsq);
     }
 
     @Override
     public boolean read() {
-        nandDir.connect(0, nandEsq);
-        nandDir.connect(1, nandEsq);
-
         return nandDir.read();
     }
 
