@@ -32,6 +32,13 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
 
         output = new JCheckBox();
 
+        if (gate.getInputSize() == 1) {
+            gate.connect(0, zero);
+        } else if (gate.getInputSize() == 2) {
+            gate.connect(0, zero);
+            gate.connect(1, one);
+        }
+
         JLabel input0Label = new JLabel("Input 0:");
         JLabel input1Label = new JLabel("Input 1:");
         JLabel outputLabel = new JLabel("Output:");
@@ -69,27 +76,23 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         boolean inputzero = Boolean.parseBoolean(null);
         boolean finaloutput;
 
-        try {
-            inputzero = input0.isSelected();
+        inputzero = input0.isSelected();
+        
+        finaloutput = connect(inputzero);
+        output.setSelected(finaloutput);
 
-        } finally {
-            finaloutput = connect(inputzero);
-            output.setSelected(finaloutput);
-        }
     }
 
     private void updateTwo() {
-        boolean inputzero = Boolean.parseBoolean(null);
-        boolean inputone = Boolean.parseBoolean(null);
+        boolean inputzero;
+        boolean inputone;
         boolean finaloutput;
 
-        try {
-            inputzero = input0.isSelected();
-            inputone = input1.isSelected();
-        } finally {
-            finaloutput = connect(inputzero, inputone);
-            output.setSelected(finaloutput);
-        }
+        inputzero = input0.isSelected();
+        inputone = input1.isSelected();
+
+        finaloutput = connect(inputzero, inputone);
+        output.setSelected(finaloutput);
     }
 
     public boolean connect(boolean inputzero) {
@@ -98,8 +101,6 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         } else {
             zero.turnOff();
         }
-
-        gate.connect(0, zero);
 
         return gate.read();
     }
@@ -115,9 +116,6 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         } else {
             one.turnOff();
         }
-
-        gate.connect(0, zero);
-        gate.connect(1, one);
 
         return gate.read();
     }
