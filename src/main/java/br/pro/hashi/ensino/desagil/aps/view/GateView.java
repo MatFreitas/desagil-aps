@@ -77,7 +77,7 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         boolean finaloutput;
 
         inputzero = input0.isSelected();
-        
+
         finaloutput = connect(inputzero);
         output.setSelected(finaloutput);
 
