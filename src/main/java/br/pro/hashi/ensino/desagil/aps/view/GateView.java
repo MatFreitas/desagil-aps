@@ -1,6 +1,9 @@
 package br.pro.hashi.ensino.desagil.aps.view;
 
-import br.pro.hashi.ensino.desagil.aps.model.*;
+import br.pro.hashi.ensino.desagil.aps.model.Gate;
+import br.pro.hashi.ensino.desagil.aps.model.Light;
+import br.pro.hashi.ensino.desagil.aps.model.Switch;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,7 +24,6 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     private final Switch three;
     private final Image image;
     private Color color;
-
 
 
     public GateView(int width, int height, Gate gate) {
@@ -132,9 +134,9 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         int x = event.getX();
         int y = event.getY();
         double Radius = 12.5;
-        double xDist = Math.pow((312.5-x), 2);
-        double yDist = Math.pow((102.5-y), 2);
-        double Dist = Math.sqrt(xDist+yDist);
+        double xDist = Math.pow((312.5 - x), 2);
+        double yDist = Math.pow((102.5 - y), 2);
+        double Dist = Math.sqrt(xDist + yDist);
 
         if (Dist <= Radius) {
             color = JColorChooser.showDialog(this, null, color);

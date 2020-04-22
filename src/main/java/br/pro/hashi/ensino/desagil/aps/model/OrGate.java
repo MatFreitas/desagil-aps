@@ -17,7 +17,7 @@ public class OrGate extends Gate {
         //Conectando
         nandDir.connect(0, nandCima);
         nandDir.connect(1, nandBaixo);
-        
+
     }
 
     @Override
