@@ -170,7 +170,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
     public void mouseExited(MouseEvent event) {
         // Não precisamos de uma reação específica à ação do mouse
         // sair do painel, mas o contrato com MouseListener obriga
-        // esse método a existir, então simplesmente deixamos vazio.
+        // esse método a existir, então simplesmente deixamos vazio
     }
 
     @Override
