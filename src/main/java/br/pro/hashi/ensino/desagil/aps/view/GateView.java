@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.net.URL;
 
 
 public class GateView extends JPanel implements ActionListener, MouseListener {
@@ -17,6 +18,7 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
     private final JCheckBox output;
     private final Switch zero;
     private final Switch one;
+    private final Image image;
 
     public GateView(int width, int height, Gate gate) {
         setLayout(null);
@@ -39,20 +41,14 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
             gate.connect(1, one);
         }
 
-        JLabel input0Label = new JLabel("Input 0:");
-        JLabel input1Label = new JLabel("Input 1:");
-        JLabel outputLabel = new JLabel("Output:");
-
-        add(input0Label, 93, 100, 75, 35);
-        add(input0, 135, 100, 150, 35);
-
-        if (gate.getInputSize() == 2) {
-            add(input1Label, 93, 120, 75, 35);
-            add(input1, 135, 120, 150, 35);
+        if (gate.getInputSize() == 1) {
+            add(input0, 3, 164, 17, 13);
+        } else if (gate.getInputSize() == 2) {
+            add(input0, 3, 106, 17, 13);
+            add(input1, 3, 221, 17, 13);
         }
 
-        add(outputLabel, 93, 200, 75, 55);
-        add(output, 135, 200, 120, 55);
+        add(output, 222, 163, 17, 13);
 
         input0.addActionListener(this);
         input1.addActionListener(this);
@@ -64,6 +60,11 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         } else if (gate.getInputSize() == 2) {
             updateTwo();
         }
+
+        // Usamos esse carregamento nos Desafios, vocês lembram?
+        String name = gate.toString() + ".png";
+        URL url = getClass().getClassLoader().getResource(name);
+        image = getToolkit().getImage(url);
 
     }
 
@@ -170,6 +171,9 @@ public class GateView extends JPanel implements ActionListener, MouseListener {
         // Não precisamos de uma reação específica à ação do mouse
         // entrar no painel, mas o contrato com MouseListener obriga
         // esse método a existir, então simplesmente deixamos vazio.
+        super.paintComponent(g);
+        // Desenha a imagem, passando sua posição e seu tamanho.
+        g.drawImage(image, 20, 60, 220, 220, this);
     }
 }
 
