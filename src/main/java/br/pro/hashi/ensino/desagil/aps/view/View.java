@@ -24,7 +24,7 @@ public class View extends JPanel implements ActionListener {
 
     private void addGateView(int index) {
         Gate gate = menu.getItemAt(index);
-        gateView = new GateView(245, 346, gate);
+        gateView = new GateView(346, 245, gate);
         add(gateView);
     }
 
