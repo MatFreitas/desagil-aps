@@ -134,7 +134,7 @@ public class GateView extends FixedPanel implements ActionListener, MouseListene
         double Radius = 12.5;
         double xDist = Math.pow((312.5-x), 2);
         double yDist = Math.pow((102.5-y), 2);
-        double Dist = Math.sqrt(xDist+yDist);;
+        double Dist = Math.sqrt(xDist+yDist);
 
         if (Dist <= Radius) {
             color = JColorChooser.showDialog(this, null, color);
